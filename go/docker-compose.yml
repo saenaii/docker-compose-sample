@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  web-app:
+    build: .
+    container_name: web-app
+    restart: always
+    environment:
+      TZ: Asia/Shanghai

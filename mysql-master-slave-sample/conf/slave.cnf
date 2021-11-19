@@ -1,0 +1,15 @@
+[mysqld]
+server-id=2
+
+log-slave-updates
+
+replicate-ignore-db=mysql  
+
+log-bin=mysql-bin
+log-bin-index=mysql-bin.index
+
+#relay_log=edu-mysql-relay-bin  
+
+#expire_logs_days=14
+
+slave-skip-errors = all  

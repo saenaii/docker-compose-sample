@@ -1,0 +1,7 @@
+[mysqld]
+server-id=1
+log-bin=mysql-bin 
+binlog-ignore-db=mysql
+# binlog_do_db = test
+sync_binlog = 1
+slave-skip-errors = all   

@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  mysql-master:
+    image: mysql:5.7
+    container_name: mysql-master
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 6000:3306
+    volumes:
+      - ./db/master:/var/lib/mysql
+      - ./conf/master.cnf:/etc/mysql/my.cnf
+    networks:
+      - myweb
+
+  mysql-slave:
+    image: mysql:5.7
+    container_name: mysql-slave
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 6001:3306
+    volumes:
+      - ./db/slave:/var/lib/mysql
+      - ./conf/slave.cnf:/etc/mysql/my.cnf
+    networks:
+      - myweb
+
+networks:
+  myweb:
+    driver: bridge
