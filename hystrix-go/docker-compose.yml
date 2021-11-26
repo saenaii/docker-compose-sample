@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  hystrix-go:
+    build: .
+    container_name: hystrix-go
+    restart: always
+    environment:
+      URL: "http://127.0.0.1:8888/" 
+      TIMEOUT: 3
+      MAX_CONCURRENT_REQUESTS: 3
+      SLEEP_WINDOW: 5000
+      REQUEST_VOLUME_THRESHOD: 5
+      ERROR_PERCENT_THRESHOLD: 30
+      CONCURRENT: 1
+      SLEEP_TIME: 0
+
